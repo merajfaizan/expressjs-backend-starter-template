@@ -29,10 +29,16 @@ function getFileComment(fileName: string): string {
 // Main function to create module directory and files
 async function createModule(moduleName: string): Promise<void> {
   const capitalizedModuleName = capitalize(moduleName);
-  
+
   // Fix the base path to your project's root directory
   const projectRoot = path.resolve(__dirname, '..'); // Adjust this based on where your script is
-  const moduleDir = path.join(projectRoot, 'src', 'app', 'modules', capitalizedModuleName);
+  const moduleDir = path.join(
+    projectRoot,
+    'src',
+    'app',
+    'modules',
+    capitalizedModuleName
+  );
 
   // Check if the module directory already exists
   if (fs.existsSync(moduleDir)) {
@@ -59,13 +65,17 @@ async function createModule(moduleName: string): Promise<void> {
     fs.writeFileSync(filePath, `${comment}\n`);
   }
 
-  console.log(`Module "${capitalizedModuleName}" with commented files created successfully.`);
+  console.log(
+    `Module "${capitalizedModuleName}" with commented files created successfully.`
+  );
 }
 
 // Parse command-line arguments to get the module name
 const args = process.argv.slice(2);
 if (args.length < 1) {
-  console.log('Please provide a module name. Usage: npm run generate <moduleName>');
+  console.log(
+    'Please provide a module name. Usage: npm run generate <moduleName>'
+  );
   process.exit(1);
 }
 
