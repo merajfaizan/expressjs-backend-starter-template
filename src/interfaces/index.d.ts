@@ -1,10 +1,10 @@
-import express, { Application } from 'express';
-import { JwtPayload } from 'jsonwebtoken';
+import type { JwtPayload } from 'jsonwebtoken';
 
 declare global {
   namespace Express {
     interface Request {
-      user: JwtPayload;
+      user?: JwtPayload & { sessionId?: string };
+      sessionId?: string;
     }
   }
 }
