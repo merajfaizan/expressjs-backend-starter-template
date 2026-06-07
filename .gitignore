@@ -1,7 +1,7 @@
 node_modules
 dist
 .vercel
-# .env
+.env
 uploads/
 .DS_Store
 *.log
